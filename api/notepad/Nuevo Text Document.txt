@@ -1,0 +1,15 @@
+EndPoints cadena de coneccion que permite comunicarme con db
+para esto se usa http y hattps
+
+metodos 
+get obtener 
+post enviar 
+put actualizar
+delete eliminar
+
+corse polici, listas negras y blancas de restriccion de contenido
+
+api 
+reques lo que envio
+response lo que recibo
+next si todo lo que viene si se complue sigue
