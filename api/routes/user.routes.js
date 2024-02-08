@@ -3,8 +3,10 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { existenteEmail, existeUsuarioByID } = require('../helpers/db-validator');
 //const {existeUsuarioByID} = require('../helpers/db-validator'); 
-const { usuariosPost } = require('../controller/user.controller');
+const { usuariosPost, usuariosGet } = require('../controller/user.controller');
 const router = Router();
+
+router.get("/", usuariosGet);
 
 router.post(
     "/",//a la raiz de la url base

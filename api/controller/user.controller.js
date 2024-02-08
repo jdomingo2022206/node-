@@ -2,6 +2,22 @@ const {response} = require('express');
 const bcryptjs = require('bcryptjs');
 const Usuario = require('../models/usuario');
 
+const usuariosGet = async (req, res = response)=>{
+    const {limite, desde} = req.query; // verifiacr si tiene query params
+    const query= {estado: true}; // valide si el estado esta en true
+    const [total, /*de documentos*/ usuarios]= await Promise.all([
+        Usuario.countDocuments(query),
+        Usuario.find(query)
+        .skip(Number(desde))
+        .limit(Number(limite))
+    ]);
+
+    res.status(200).json({
+        total,
+        usuarios
+    });
+}
+
 const usuariosPost = async (req, res) =>{
     const {nombre,correo,password,role} = req.body;
     const usuario = new Usuario({nombre,correo,password,role});
@@ -23,5 +39,6 @@ const usuariosPost = async (req, res) =>{
 }
 
 module.exports = {
-    usuariosPost
+    usuariosPost,
+    usuariosGet
 }
