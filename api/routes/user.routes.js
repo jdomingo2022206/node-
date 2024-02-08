@@ -7,7 +7,7 @@ const { usuariosPost } = require('../controller/user.controller');
 const router = Router();
 
 router.post(
-    "/",
+    "/",//a la raiz de la url base
     [
         check("nombre", "El nombre es obligatorio").not().isEmpty(),
         check("password", "El nombre debe tener mas de 6 caracteres").isLength({min: 6,}),
